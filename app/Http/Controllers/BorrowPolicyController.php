@@ -7,29 +7,38 @@ use Illuminate\Http\Request;
 
 class BorrowPolicyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $policies = BorrowPolicy::all();
+
+        return view('borrow-policies.index', compact('policies'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('borrow-policies.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'role' => 'required|unique:borrow_policies',
+            'max_books' => 'required|integer|min:1',
+            'borrow_days' => 'required|integer|min:1',
+        ]);
+
+        BorrowPolicy::create([
+            'role' => $request->role,
+            'max_books' => $request->max_books,
+            'borrow_days' => $request->borrow_days,
+            'active' => true,
+        ]);
+
+        return redirect()
+            ->route('borrow-policies.index')
+            ->with('success', 'บันทึกนโยบายสำเร็จ');
     }
+
 
     /**
      * Display the specified resource.

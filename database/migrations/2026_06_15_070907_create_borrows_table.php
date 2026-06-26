@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('borrows', function (Blueprint $table) {
@@ -27,7 +24,8 @@ return new class extends Migration
 
             $table->date('due_date');
 
-            $table->date('return_date')->nullable();
+            $table->date('return_date')
+                ->nullable();
 
             $table->enum('status',[
                 'borrowed',
@@ -39,9 +37,6 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('borrows');

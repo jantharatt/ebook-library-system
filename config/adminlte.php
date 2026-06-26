@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'RUS Ebook Library ',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -63,12 +63,15 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo' => '<b>RUS</b> Ebook',
+    // 'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo_img' => 'null',
+    // 'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo_img_class' => '',
     'logo_img_xl' => null,
-    'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Admin Logo',
+    // 'logo_img_xl_class' => 'brand-image-xs',
+    'logo_img_xl_class' => '',
+    'logo_img_alt' => '',
 
     /*
     |--------------------------------------------------------------------------
@@ -110,7 +113,7 @@ return [
     */
 
     'preloader' => [
-        'enabled' => true,
+        'enabled' => false,
         'mode' => 'fullscreen',
         'img' => [
             'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
@@ -303,57 +306,75 @@ return [
     [
         'text' => 'Dashboard',
         'url'  => 'dashboard',
-        'icon' => 'fas fa-fw fa-tachometer-alt',
+        'icon' => 'fas fa-tachometer-alt',
     ],
 
-    ['header' => 'จัดการผู้ใช้งาน'],
-
     [
-        'text' => 'ผู้ใช้งาน',
-        'icon' => 'fas fa-users',
-        'url' => '#',
-    ],
-
-    ['header' => 'จัดการ Ebook'],
-
-    [
-        'text' => 'หมวดหมู่',
-        'icon' => 'fas fa-book',
-        'url' => 'categories',
+        'header' => 'ระบบ Ebook'
     ],
 
     [
         'text' => 'Ebook',
         'icon' => 'fas fa-book-open',
-        'url' => '#',
-    ],
+        'submenu' => [
 
-    ['header' => 'การยืมคืน'],
+            [
+                'text' => 'รายการ Ebook',
+                'url'  => 'ebooks',
+                'icon' => 'fas fa-book',
+            ],
+
+            [
+                'text' => 'หมวดหมู่',
+                'url'  => 'categories',
+                'icon' => 'fas fa-folder',
+            ],
+
+        ],
+    ],
 
     [
-        'text' => 'ยืม Ebook',
-        'icon' => 'fas fa-hand-holding',
-        'url' => '#',
+        'header' => 'ระบบยืมคืน'
     ],
 
     [
-        'text' => 'คืน Ebook',
-        'icon' => 'fas fa-undo',
-        'url' => '#',
+        'text' => 'การยืม Ebook',
+        'icon' => 'fas fa-exchange-alt',
+        'submenu' => [
+
+            [
+                'text' => 'ประวัติการยืม',
+                'url'  => 'borrows',
+                'icon' => 'fas fa-history',
+            ],
+
+            [
+                'text' => 'นโยบายการยืม',
+                'url'  => 'borrow-policies',
+                'icon' => 'fas fa-user-shield',
+            ],
+
+        ],
     ],
 
     [
-        'text' => 'ประวัติการยืม',
-        'icon' => 'fas fa-history',
-        'url' => '#',
+        'header' => 'ผู้ใช้งาน'
     ],
 
-    ['header' => 'รายงาน'],
+    [
+        'text' => 'จัดการผู้ใช้งาน',
+        'url'  => '#',
+        'icon' => 'fas fa-users',
+    ],
+
+    [
+        'header' => 'รายงาน'
+    ],
 
     [
         'text' => 'สถิติการใช้งาน',
+        'url'  => '#',
         'icon' => 'fas fa-chart-bar',
-        'url' => '#',
     ],
 
 ],
