@@ -34,26 +34,38 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+        protected $hidden = [
+            'password',
+            'remember_token',
         ];
-    }
 
-    public function borrows(): HasMany
-{
-    return $this->hasMany(Borrow::class);
-}
+        /**
+         * Get the attributes that should be cast.
+         *
+         * @return array<string, string>
+         */
+        protected function casts(): array
+        {
+            return [
+                'email_verified_at' => 'datetime',
+                'password' => 'hashed',
+            ];
+        }
+
+        public function borrows(): HasMany
+        {
+            return $this->hasMany(Borrow::class);
+        }
+
+        public function getRoleNameAttribute()
+        {
+            return match($this->role) {
+                'admin' => 'แอดมิน',
+                'teacher' => 'อาจารย์',
+                'staff' => 'เจ้าหน้าที่',
+                'student' => 'นักศึกษา',
+                'alumni' => 'นักศึกษาเก่า',
+                default => 'ผู้ใช้งาน'
+            };
+        }
 }

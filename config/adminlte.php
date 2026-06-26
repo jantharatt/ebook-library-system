@@ -63,8 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>RUS</b> Ebook',
-    // 'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+'logo' => '<b>Ebook</b> Library',    // 'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img' => 'null',
     // 'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_class' => '',
@@ -155,7 +154,7 @@ return [
     |
     */
 
-    'layout_topnav' => null,
+    'layout_topnav' => true,
     'layout_boxed' => null,
     'layout_fixed_sidebar' => null,
     'layout_fixed_navbar' => null,
@@ -199,7 +198,7 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
+    'classes_sidebar' => '',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
@@ -301,83 +300,82 @@ return [
     |
     */
 
-'menu' => [
+    'menu' => [
 
     [
-        'text' => 'Dashboard',
-        'url'  => 'dashboard',
-        'icon' => 'fas fa-tachometer-alt',
+        'text' => 'หน้าหลัก',
+        'route' => 'dashboard',
     ],
 
     [
-        'header' => 'ระบบ Ebook'
+        'text' => 'หนังสือ',
+        'route' => 'ebooks.index',
     ],
 
     [
-        'text' => 'Ebook',
-        'icon' => 'fas fa-book-open',
-        'submenu' => [
+        'text' => 'ยืม/คืน',
+        'route' => 'borrows.index',
+    ],
 
-            [
-                'text' => 'รายการ Ebook',
-                'url'  => 'ebooks',
-                'icon' => 'fas fa-book',
-            ],
+    [
+        'text' => 'แดชบอร์ด',
+        'route' => 'dashboard',
+    ],
 
-            [
-                'text' => 'หมวดหมู่',
-                'url'  => 'categories',
-                'icon' => 'fas fa-folder',
-            ],
+    [
+        'text' => 'Chatbot',
+        'url' => '#',
+    ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | เมนูจัดการ (เฉพาะ Admin)
+    |--------------------------------------------------------------------------
+    */
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | เมนูด้านขวา
+    |--------------------------------------------------------------------------
+    */
+
+    [
+        'type' => 'navbar-search',
+        'topnav_right' => true,
+    ],
+
+[
+    'text' => 'จัดการ',
+    'can' => 'admin',
+
+    'submenu' => [
+        [
+            'text' => 'หมวดหมู่',
+            'url' => 'categories',
+        ],
+
+        [
+            'text' => 'นโยบายการยืม',
+            'url' => 'borrow-policies',
         ],
     ],
-
-    [
-        'header' => 'ระบบยืมคืน'
-    ],
-
-    [
-        'text' => 'การยืม Ebook',
-        'icon' => 'fas fa-exchange-alt',
-        'submenu' => [
-
-            [
-                'text' => 'ประวัติการยืม',
-                'url'  => 'borrows',
-                'icon' => 'fas fa-history',
-            ],
-
-            [
-                'text' => 'นโยบายการยืม',
-                'url'  => 'borrow-policies',
-                'icon' => 'fas fa-user-shield',
-            ],
-
-        ],
-    ],
-
-    [
-        'header' => 'ผู้ใช้งาน'
-    ],
-
-    [
-        'text' => 'จัดการผู้ใช้งาน',
-        'url'  => '#',
-        'icon' => 'fas fa-users',
-    ],
-
-    [
-        'header' => 'รายงาน'
-    ],
-
-    [
-        'text' => 'สถิติการใช้งาน',
-        'url'  => '#',
-        'icon' => 'fas fa-chart-bar',
-    ],
-
 ],
+
+    [
+        'text' => 'เปลี่ยนข้อมูล',
+        'route' => 'profile.edit',
+        'topnav_right' => true,
+    ],
+
+    [
+        'text' => 'ออกจากระบบ',
+        'route' => 'logout',
+        'topnav_right' => true,
+    ],
+
+    ],
+
 
     /*
     |--------------------------------------------------------------------------
